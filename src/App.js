@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import actions from './actions';
-import OptionAndFilters from './components/OptionAndFilters';
+import Filters from './components/Filters';
 import Launches from './components/Launches';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
 
   return (
     <Container>
-      <OptionAndFilters />
+      <Filters />
       <Launches />
     </Container>
   );

@@ -20,10 +20,20 @@ function Launches(props) {
       url += `&launch_year=${launchYear}`
     }
 
-    Axios.get(url).then(({ data }) => {
-      setLaunchData(data);
-    });
-  }, [launchYear]);
+    if(filters.launchSuccess) {
+      url += `&launch_success=${true}`
+    }
+
+    if(filters.landingSuccess) {
+      url += `&land_success=${true}`
+    }
+
+    Axios
+      .get(url)
+      .then(({ data }) => {
+        setLaunchData(data);
+      });
+  }, [launchYear, filters]);
 
   return (
     <div>

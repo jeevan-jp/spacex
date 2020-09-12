@@ -9,7 +9,7 @@ const filters = (state = initialState, action) => {
     case "LAUNCH_SUCCESS":
       return { ...state, launchSuccess: Boolean(action.value) }
     case "LANDING_SUCCESS":
-      return { ...state, launchSuccess: Boolean(action.value) }
+      return { ...state, landingSuccess: Boolean(action.value) }
     case "YEAR_FILTER":
       return { ...state, yearFilter: Boolean(action.value) }
     default:
