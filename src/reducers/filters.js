@@ -12,5 +12,9 @@ const filters = (state = initialState, action) => {
       return { ...state, launchSuccess: Boolean(action.value) }
     case "YEAR_FILTER":
       return { ...state, yearFilter: Boolean(action.value) }
+    default:
+      return state;
   }
 }
+
+export default filters;

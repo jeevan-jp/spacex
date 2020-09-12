@@ -9,7 +9,7 @@ const landingSuccess = (value) => ({
 });
 
 const yearFilter = (value) => ({
-  type: "LANDING_SUCCESS",
+  type: "YEAR_FILTER",
   value
 });
 

@@ -6,17 +6,24 @@ import Axios from 'axios';
 import baseUrl from '../../utils/baseUrl';
 
 function Launches(props) {
-  const year = useSelector(state => state.selectedYear);
+  const launchYear = useSelector(state => state.selectedYear);
+  const filters = useSelector(state => state.filters);
   const dispatch = useDispatch();
 
   const [launchData, setLaunchData] = useState([]);
 
   useEffect(() => {
-    console.log(year)
-    Axios.get(`${baseUrl}?limit=100`).then(({ data }) => {
+    console.log(launchYear)
+
+    let url = `${baseUrl}?limit=100`;
+    if(launchYear && filters.yearFilter) {
+      url += `&launch_year=${launchYear}`
+    }
+
+    Axios.get(url).then(({ data }) => {
       setLaunchData(data);
     });
-  }, [year]);
+  }, [launchYear]);
 
   return (
     <div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import actions from '../../actions';
 
@@ -8,9 +8,14 @@ const allYears = [2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 20
 
 function OptionAndFilters(props) {
   const dispatch = useDispatch();
+  const filters = useSelector(state => state.filters);
+  console.log(filters)
 
   const handleYear = (year) => {
     console.log(year)
+    if(!filters.yearFilter) {
+      dispatch(actions.filters.yearFilter(true));
+    }
     dispatch(actions.actionYear.updateYear(year));
   }
 
@@ -20,7 +25,10 @@ function OptionAndFilters(props) {
       <FilterContainer>
         {
           allYears.map((year, i) => (
-            <Button key={'button' + i} onClick={() => handleYear(year)}>{year}</Button>
+            <Button
+              key={'button' + i}
+              onClick={() => handleYear(year)}
+            >{year}</Button>
           ))
         }
       </FilterContainer>
