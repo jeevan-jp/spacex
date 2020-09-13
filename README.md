@@ -6,16 +6,13 @@
 * React Hooks instead of class based component
 * Axios for API calls
 
-* For server side rendering I've used firebase cloud function
-* site is served on firebase hosting
+* firebase hosting to host the site
+* firebsae cloud function for SSR
 
 ## Setup Instructions
   * clone the repository
   * ``` npm i ```
   * ``` npm start ```
 
-## TODO:
-  * SSR
-  * test cases
-  * add remaining text in filters
-
+## Link to SSR version of spacex app
+https://github.com/jeevan-jp/spacex-ssr.git
