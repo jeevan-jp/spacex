@@ -45,6 +45,7 @@ function Filters(props) {
               <Button
                 className="btn-primary"
                 key={'btn' + i}
+                data-testid={`filterBtn${i+1}`}
                 onClick={() => handleYearChange(year)}
                 active={year === parseInt(props.match.params.year, 10)}
               >{year}</Button>
@@ -52,7 +53,7 @@ function Filters(props) {
           }
         </ButtonContainer>
 
-        <Label>Successful Launch</Label>
+        <Label data-testid="launch-success">Successful Launch</Label>
         <hr />
         <ButtonContainer>
           <Button
@@ -68,7 +69,7 @@ function Filters(props) {
         </ButtonContainer>
 
 
-        <Label>Successful Land</Label>
+        <Label data-testid="land-success">Successful Land</Label>
         <hr />
         <ButtonContainer>
           <Button
