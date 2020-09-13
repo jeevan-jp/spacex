@@ -34,13 +34,11 @@ function Launches(props) {
   if(loading) return <Loader />
 
   return (
-    <div>
-      <h1>Launches</h1>
-      <CardContainer>
-        { launchData.map((missionDetails, i) => <Launch details={missionDetails} key={i} />) }
-      </CardContainer>
-    </div>
-  )
+    <CardContainer>
+      { launchData.map((missionDetails, i) => <Launch details={missionDetails} key={i} />) }
+      { launchData.length === 0 && <h3>No Data</h3> }
+    </CardContainer>
+  );
 }
 
 export default Launches;

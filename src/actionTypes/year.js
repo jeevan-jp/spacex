@@ -1,0 +1,1 @@
+export const NEW_YEAR = "NEW_YEAR";

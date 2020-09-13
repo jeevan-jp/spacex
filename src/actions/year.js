@@ -1,18 +1,10 @@
+import { NEW_YEAR } from '../actionTypes/year';
+
 const updateYear = (year) => ({
-  type: "NEW",
+  type: NEW_YEAR,
   year
-});
-
-const incrementYear = () => ({
-  type: "NEXT",
-});
-
-const decrementYear = () => ({
-  type: "PREVIOUS",
 });
 
 export default {
   updateYear,
-  incrementYear,
-  decrementYear
 }

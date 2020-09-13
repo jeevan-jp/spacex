@@ -9,6 +9,7 @@ const allYears = [2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 20
 function Filters(props) {
   const dispatch = useDispatch();
   const filters = useSelector(state => state.filters);
+  const launchYear = useSelector(state => state.selectedYear);
   // console.log(filters)
 
   const toggleLaunchFilter = (e) => {
@@ -27,14 +28,17 @@ function Filters(props) {
     dispatch(actions.actionYear.updateYear(year));
   }
 
+  console.log('filters.yearFilter', filters.yearFilter);
+
   return (
-    <div>
+    <Container>
       <FilterContainer>
         {
           allYears.map((year, i) => (
             <Button
               key={'btn' + i}
               onClick={() => handleYearChange(year)}
+              active={year === launchYear}
             >{year}</Button>
           ))
         }
@@ -43,23 +47,32 @@ function Filters(props) {
           <input type={"checkbox"} onChange={toggleLandFilter} checked={filters.landingSuccess} />
         </div>
       </FilterContainer>
-    </div>
+    </Container>
   )
 }
 
 export default Filters;
 
-const FilterContainer = styled.div`
+const Container = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const FilterContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2rem;
+  padding: 1rem;
+  max-width: 80%;
+  background: #fff;
 `;
 
 const Button = styled.button`
   display: flex;
-  background: #009688;
+  background: ${({active}) => active ? '#7cb900' : '#c5e09c'};
   margin: 4px;
   border: none;
   padding: 4px 6px;
-  color: #fff;
   cursor: pointer;
 `;

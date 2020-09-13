@@ -1,11 +1,9 @@
-const selectedYear = (state = new Date().getUTCFullYear(), action) => {
+import { NEW_YEAR } from "../actionTypes/year";
+
+const selectedYear = (state = null, action) => {
   switch(action.type) {
-    case "NEW":
+    case NEW_YEAR:
       return action.year;
-    case "NEXT":
-      return parseInt(state) + 1;
-    case "PREVIOUS":
-      return parseInt(state) - 1;
     default:
       return state;
   }
