@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import styled from 'styled-components';
 import Axios from 'axios';
 
 import baseUrl from '../../utils/baseUrl';
@@ -15,7 +14,6 @@ function Launches(props) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log(launchYear)
     if(!loading) setLoading(true);
 
     let url = `${baseUrl}?limit=100`;
@@ -34,27 +32,11 @@ function Launches(props) {
   if(loading) return <Loader />
 
   return (
-    <CardContainer>
+    <div className="card-container">
       { launchData.map((missionDetails, i) => <Launch details={missionDetails} key={i} />) }
       { launchData.length === 0 && <h3>No Data</h3> }
-    </CardContainer>
+    </div>
   );
 }
 
 export default Launches;
-
-const CardContainer = styled.div`
-  display: grid;
-
-  @media only screen and (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media only screen and (max-width: 700px) {
-    grid-template-columns: 1fr;
-  }
-
-  @media only screen and (min-width: 1024px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-`;

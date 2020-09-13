@@ -10,7 +10,6 @@ function Filters(props) {
   const dispatch = useDispatch();
   const filters = useSelector(state => state.filters);
   const launchYear = useSelector(state => state.selectedYear);
-  // console.log(filters)
 
   const toggleLaunchFilter = (e) => {
     dispatch(actions.filters.launchSuccess(!filters.launchSuccess));
@@ -36,6 +35,7 @@ function Filters(props) {
         {
           allYears.map((year, i) => (
             <Button
+              className="btn-primary"
               key={'btn' + i}
               onClick={() => handleYearChange(year)}
               active={year === launchYear}
@@ -87,10 +87,5 @@ const CheckBox = styled.div`
 `;
 
 const Button = styled.button`
-  display: flex;
   background: ${({active}) => active ? '#7cb900' : '#c5e09c'};
-  margin: 4px;
-  border: none;
-  padding: 4px 6px;
-  cursor: pointer;
 `;

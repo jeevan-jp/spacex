@@ -9,7 +9,6 @@ function Launch(props) {
     launch_success,
     links
   } = props.details;
-  console.log(props.details.launch_landing)
 
   return (
     <div className="material-card">

@@ -4,24 +4,29 @@ import styled from 'styled-components';
 import Filters from './components/Filters';
 import Launches from './components/Launches';
 
-import "./App.scss"
+import "./App.scss";
 
 function App() {
   return (
-    <React.Fragment>
+    <RootContainer>
       <Heading>SpaceX Launch Programs</Heading>
       <Container>
         <Filters />
         <Launches />
       </Container>
-    </React.Fragment>
+    </RootContainer>
   );
 }
 
 export default App;
 
-const Heading = styled.h2`
-  margin-left: 1rem;
+const RootContainer = styled.div`
+  max-width: 1440px;
+  margin: 0 auto;
+`;
+
+const Heading = styled.h1`
+  margin-left: 2rem;
 `;
 
 const Container = styled.div`
