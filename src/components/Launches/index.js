@@ -46,15 +46,15 @@ export default Launches;
 const CardContainer = styled.div`
   display: grid;
 
-  @media only screen and (max-width: 700px) {
-    grid-template-columns: 1fr;
-  }
-
   @media only screen and (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media only screen and (min-width: 1044px) {
+  @media only screen and (max-width: 700px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media only screen and (min-width: 1024px) {
     grid-template-columns: repeat(4, 1fr);
   }
 `;

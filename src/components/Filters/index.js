@@ -32,7 +32,7 @@ function Filters(props) {
 
   return (
     <Container>
-      <FilterContainer>
+      <ButtonContainer>
         {
           allYears.map((year, i) => (
             <Button
@@ -42,11 +42,15 @@ function Filters(props) {
             >{year}</Button>
           ))
         }
-        <div>
-          <input type={"checkbox"} onChange={toggleLaunchFilter} checked={filters.launchSuccess} />
-          <input type={"checkbox"} onChange={toggleLandFilter} checked={filters.landingSuccess} />
-        </div>
-      </FilterContainer>
+      </ButtonContainer>
+      <CheckBox>
+        <label htmlFor="launchSuccess">Successful Launch</label>
+        <input type={"checkbox"} id="launchSuccess" onChange={toggleLaunchFilter} checked={filters.launchSuccess} />
+      </CheckBox>
+      <CheckBox>
+        <label htmlFor="landSuccess">Successful Landing</label>
+        <input type={"checkbox"} id="landSuccess" onChange={toggleLandFilter} checked={filters.landingSuccess} />
+      </CheckBox>
     </Container>
   )
 }
@@ -57,6 +61,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 1rem 1rem;
 `;
 
 const FilterContainer = styled.div`
@@ -66,6 +71,19 @@ const FilterContainer = styled.div`
   padding: 1rem;
   max-width: 80%;
   background: #fff;
+`;
+
+const ButtonContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2rem;
+  padding: 1rem;
+  max-width: 80%;
+  background: #fff;
+`;
+
+const CheckBox = styled.div`
+  margin-top: 8px;
 `;
 
 const Button = styled.button`
