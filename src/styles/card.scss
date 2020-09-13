@@ -21,6 +21,10 @@
   background: #fff;
   box-shadow: 0 1px 3px $box-shadow-color-1, 0 1px 2px  $box-shadow-color-2;
 
+  img {
+    background: $background-color;
+  }
+
   tr {
     font-size: 14px;
   }

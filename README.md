@@ -17,5 +17,5 @@
 ## TODO:
   * SSR
   * test cases
-  * minimize use of styled-components
+  * add remaining text in filters
 

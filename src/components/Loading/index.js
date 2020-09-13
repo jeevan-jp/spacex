@@ -1,20 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 
 function Loader(props) {
   return (
-    <Container>
+    <div className={"loader-container"}>
       <img src={"/puffLoader.svg"} alt="loading..." />
-    </Container>
+    </div>
   )
 }
 
 export default Loader;
-
-const Container = styled.div`
-  display: flex;
-  width: 100%;
-  height: 90vh;
-  align-items: center;
-  justify-content: center;
-`;

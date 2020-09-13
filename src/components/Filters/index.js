@@ -39,7 +39,7 @@ function Filters(props) {
               className="btn-primary"
               key={'btn' + i}
               onClick={() => handleYearChange(year)}
-              active={year === props.match.params.year}
+              active={year == props.match.params.year}
             >{year}</Button>
           ))
         }
