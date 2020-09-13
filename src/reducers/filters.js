@@ -2,8 +2,8 @@ import { LAUNCH_SUCCESS, LANDING_SUCCESS, YEAR_FILTER } from "../actionTypes/fil
 
 const initialState = {
   yearFilter: false,
-  launchSuccess: false,
-  landingSuccess: false
+  launchSuccess: null,
+  landingSuccess: null
 };
 
 const filters = (state = initialState, action) => {

@@ -10,12 +10,20 @@ function Filters(props) {
   const dispatch = useDispatch();
   const filters = useSelector(state => state.filters);
 
-  const toggleLaunchFilter = (e) => {
-    dispatch(actions.filters.launchSuccess(!filters.launchSuccess));
+  const turnOnLaunchFilter = () => {
+    dispatch(actions.filters.launchSuccess(true));
   }
 
-  const toggleLandFilter = (e) => {
-    dispatch(actions.filters.landingSuccess(!filters.landingSuccess));
+  const turnOffLaunchFilter = () => {
+    dispatch(actions.filters.launchSuccess(false));
+  }
+
+  const turnOnLandFilter = () => {
+    dispatch(actions.filters.landingSuccess(true));
+  }
+
+  const turnOffLandFilter = () => {
+    dispatch(actions.filters.landingSuccess(false));
   }
 
   const handleYearChange = (year) => {
@@ -29,6 +37,8 @@ function Filters(props) {
   return (
     <Container>
       <FilterContainer>
+        <Label>Launch Date</Label>
+        <hr />
         <ButtonContainer>
           {
             allYears.map((year, i) => (
@@ -41,15 +51,38 @@ function Filters(props) {
             ))
           }
         </ButtonContainer>
+
+        <Label>Successful Launch</Label>
+        <hr />
+        <ButtonContainer>
+          <Button
+            className="btn-primary"
+            onClick={turnOnLaunchFilter}
+            active={filters.launchSuccess}
+          >true</Button>
+          <Button
+            className="btn-primary"
+            onClick={turnOffLaunchFilter}
+            active={filters.launchSuccess !== null && filters.launchSuccess === false}
+          >false</Button>
+        </ButtonContainer>
+
+
+        <Label>Successful Launch</Label>
+        <hr />
+        <ButtonContainer>
+          <Button
+            className="btn-primary"
+            onClick={turnOnLandFilter}
+            active={filters.landingSuccess}
+          >true</Button>
+          <Button
+            className="btn-primary"
+            onClick={turnOffLandFilter}
+            active={filters.landingSuccess !== null && filters.landingSuccess === false}
+          >false</Button>
+        </ButtonContainer>
       </FilterContainer>
-      <CheckBox>
-        <label htmlFor="launchSuccess">Successful Launch</label>
-        <input type={"checkbox"} id="launchSuccess" onChange={toggleLaunchFilter} checked={filters.launchSuccess} />
-      </CheckBox>
-      <CheckBox>
-        <label htmlFor="landSuccess">Successful Landing</label>
-        <input type={"checkbox"} id="landSuccess" onChange={toggleLandFilter} checked={filters.landingSuccess} />
-      </CheckBox>
     </Container>
   )
 }
@@ -64,11 +97,8 @@ const Container = styled.nav`
 `;
 
 const FilterContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 2rem;
   padding: 1rem;
-  max-width: 80%;
+  min-width: 150px;
   background: #fff;
 `;
 
@@ -76,15 +106,16 @@ const ButtonContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 2rem;
-  padding: 1rem;
   max-width: 80%;
   background: #fff;
 `;
 
-const CheckBox = styled.div`
-  margin-top: 8px;
+const Label = styled.p`
+  text-align: center;
+  margin-bottom: 0;
 `;
 
 const Button = styled.button`
   background: ${({active}) => active ? '#7cb900' : '#c5e09c'};
+  user-select: none;
 `;
