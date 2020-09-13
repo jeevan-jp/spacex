@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import Axios from 'axios';
 
 import baseUrl from '../../utils/baseUrl';
-import Launch from './Launch';
 import Loader from '../Loading';
+
+const Launch = React.lazy(() => import('./Launch'));
 
 function Launches(props) {
   const filters = useSelector(state => state.filters);
@@ -13,8 +14,6 @@ function Launches(props) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if(!loading) setLoading(true);
-
     let url = `${baseUrl}?limit=100`;
     const yearInRoute = props.match.params.year;
 
@@ -34,7 +33,11 @@ function Launches(props) {
 
   return (
     <div className="card-container">
-      { launchData.map((missionDetails, i) => <Launch details={missionDetails} key={i} />) }
+      { launchData.map((missionDetails, i) => (
+        <Suspense  key={i + 'card'} fallback={<div className="material-card"></div>}>
+          <Launch details={missionDetails} />
+        </Suspense>
+      )) }
       { launchData.length === 0 && <h3>No Data</h3> }
     </div>
   );

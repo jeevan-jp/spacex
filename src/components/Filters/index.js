@@ -46,7 +46,7 @@ function Filters(props) {
                 className="btn-primary"
                 key={'btn' + i}
                 onClick={() => handleYearChange(year)}
-                active={year == props.match.params.year}
+                active={year === parseInt(props.match.params.year, 10)}
               >{year}</Button>
             ))
           }
@@ -68,7 +68,7 @@ function Filters(props) {
         </ButtonContainer>
 
 
-        <Label>Successful Launch</Label>
+        <Label>Successful Land</Label>
         <hr />
         <ButtonContainer>
           <Button
@@ -98,15 +98,16 @@ const Container = styled.nav`
 
 const FilterContainer = styled.div`
   padding: 1rem;
+  padding-top: 0;
   min-width: 150px;
   background: #fff;
+  border-radius: 8px;
 `;
 
 const ButtonContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 2rem;
-  max-width: 80%;
   background: #fff;
 `;
 

@@ -19,7 +19,7 @@ function Launch(props) {
         alt="mission logo"
         draggable="false"
       />
-      <h4>{mission_name} #{flight_number}</h4>
+      <p className={"mission-name"}>{mission_name} #{flight_number}</p>
       <table>
         <tbody>
           <tr>
