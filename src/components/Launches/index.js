@@ -7,7 +7,6 @@ import Launch from './Launch';
 import Loader from '../Loading';
 
 function Launches(props) {
-  const launchYear = useSelector(state => state.selectedYear);
   const filters = useSelector(state => state.filters);
 
   const [launchData, setLaunchData] = useState([]);
@@ -17,7 +16,9 @@ function Launches(props) {
     if(!loading) setLoading(true);
 
     let url = `${baseUrl}?limit=100`;
-    if(launchYear && filters.yearFilter) url += `&launch_year=${launchYear}`;
+    const yearInRoute = props.match.params.year;
+
+    if(yearInRoute) url += `&launch_year=${yearInRoute}`;
     if(filters.launchSuccess) url += `&launch_success=${true}`;
     if(filters.landingSuccess) url += `&land_success=${true}`;
 
@@ -27,7 +28,7 @@ function Launches(props) {
         setLaunchData(data);
         setLoading(false);
       });
-  }, [launchYear, filters]);
+  }, [props.match.params, filters]);
 
   if(loading) return <Loader />
 

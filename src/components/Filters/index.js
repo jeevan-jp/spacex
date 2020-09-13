@@ -9,7 +9,6 @@ const allYears = [2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 20
 function Filters(props) {
   const dispatch = useDispatch();
   const filters = useSelector(state => state.filters);
-  const launchYear = useSelector(state => state.selectedYear);
 
   const toggleLaunchFilter = (e) => {
     dispatch(actions.filters.launchSuccess(!filters.launchSuccess));
@@ -24,7 +23,9 @@ function Filters(props) {
     if(!filters.yearFilter) {
       dispatch(actions.filters.yearFilter(true));
     }
-    dispatch(actions.actionYear.updateYear(year));
+    console.log('year', year);
+    props.history.push(`/${year}`);
+    // dispatch(actions.actionYear.updateYear(year));
   }
 
   console.log('filters.yearFilter', filters.yearFilter);
@@ -38,7 +39,7 @@ function Filters(props) {
               className="btn-primary"
               key={'btn' + i}
               onClick={() => handleYearChange(year)}
-              active={year === launchYear}
+              active={year === props.match.params.year}
             >{year}</Button>
           ))
         }

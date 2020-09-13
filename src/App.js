@@ -1,41 +1,26 @@
 import React from 'react';
-import styled from 'styled-components';
-
-import Filters from './components/Filters';
-import Launches from './components/Launches';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import "./App.scss";
 
+import rootReducer from './reducers';
+import Home from './pages/Home';
+
+const store = createStore(rootReducer);
+
 function App() {
   return (
-    <RootContainer>
-      <Heading>SpaceX Launch Programs</Heading>
-      <Container>
-        <Filters />
-        <Launches />
-      </Container>
-    </RootContainer>
+    <Router>
+      <Provider store={store}>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/:year" component={Home} />
+        </Switch>
+      </Provider>
+    </Router>
   );
 }
 
 export default App;
-
-const RootContainer = styled.div`
-  max-width: 1440px;
-  margin: 0 auto;
-`;
-
-const Heading = styled.h1`
-  margin-left: 2rem;
-`;
-
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: 0.8fr 4fr;
-  @media only screen and (max-width: 700px) {
-    grid-template-columns: 1fr;
-    & > div:last-child > div {
-      margin-left: 1rem;
-    }
-  }
-`;
