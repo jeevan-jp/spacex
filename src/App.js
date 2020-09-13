@@ -4,10 +4,12 @@ import styled from 'styled-components';
 import Filters from './components/Filters';
 import Launches from './components/Launches';
 
+import "./App.scss"
+
 function App() {
   return (
     <React.Fragment>
-      <h1>SpaceX Launch Programs</h1>
+      <Heading>SpaceX Launch Programs</Heading>
       <Container>
         <Filters />
         <Launches />
@@ -17,6 +19,10 @@ function App() {
 }
 
 export default App;
+
+const Heading = styled.h2`
+  margin-left: 1rem;
+`;
 
 const Container = styled.div`
   display: grid;
