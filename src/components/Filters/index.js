@@ -23,27 +23,25 @@ function Filters(props) {
     if(!filters.yearFilter) {
       dispatch(actions.filters.yearFilter(true));
     }
-    console.log('year', year);
     props.history.push(`/${year}`);
-    // dispatch(actions.actionYear.updateYear(year));
   }
-
-  console.log('filters.yearFilter', filters.yearFilter);
 
   return (
     <Container>
-      <ButtonContainer>
-        {
-          allYears.map((year, i) => (
-            <Button
-              className="btn-primary"
-              key={'btn' + i}
-              onClick={() => handleYearChange(year)}
-              active={year == props.match.params.year}
-            >{year}</Button>
-          ))
-        }
-      </ButtonContainer>
+      <FilterContainer>
+        <ButtonContainer>
+          {
+            allYears.map((year, i) => (
+              <Button
+                className="btn-primary"
+                key={'btn' + i}
+                onClick={() => handleYearChange(year)}
+                active={year == props.match.params.year}
+              >{year}</Button>
+            ))
+          }
+        </ButtonContainer>
+      </FilterContainer>
       <CheckBox>
         <label htmlFor="launchSuccess">Successful Launch</label>
         <input type={"checkbox"} id="launchSuccess" onChange={toggleLaunchFilter} checked={filters.launchSuccess} />
@@ -58,7 +56,7 @@ function Filters(props) {
 
 export default Filters;
 
-const Container = styled.div`
+const Container = styled.nav`
   display: flex;
   flex-direction: column;
   align-items: center;

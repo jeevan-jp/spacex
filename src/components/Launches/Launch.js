@@ -12,7 +12,13 @@ function Launch(props) {
 
   return (
     <div className="material-card">
-      <img src={links.mission_patch_small} width={"100%"} height={"256px"} alt="mission logo" />
+      <img
+        src={links.mission_patch_small}
+        width={"100%"}
+        height={"256px"}
+        alt="mission logo"
+        draggable="false"
+      />
       <h4>{mission_name} #{flight_number}</h4>
       <table>
         <tbody>
